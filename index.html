@@ -25,8 +25,8 @@
         }
 
         .calendar .day {
-            width: 14%; /* Adjust the width as a percentage of the container */
-            padding-bottom: 14%; /* Set the aspect ratio (square) */
+            width: 100px;
+            height: 100px;
             background-color: #444;
             border: 1px solid #333;
             display: flex;
@@ -35,33 +35,11 @@
             justify-content: center;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .calendar .day::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 80%);
-            pointer-events: none;
-            opacity: 0;
-            transform: scale(1.2) rotate(45deg);
+            transition: background-color 0.3s ease;
         }
 
         .calendar .day:hover {
             background-color: #555;
-            transform: scale(1.05);
-        }
-
-        .calendar .day:hover::before {
-            opacity: 1;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            transform: scale(1) rotate(0deg);
         }
 
         audio {
@@ -72,7 +50,7 @@
             background-color: #444;
             color: #fff;
             border: none;
-            padding: 10px; /* Adjust the padding as needed */
+            padding: 10px 20px;
             font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
@@ -82,17 +60,6 @@
 
         button:hover {
             background-color: #555;
-        }
-
-        @media (max-width: 600px) {
-            .calendar .day {
-                width: 20%; /* Adjust the width for smaller screens */
-                padding-bottom: 20%; /* Maintain the aspect ratio */
-            }
-
-            button {
-                font-size: 14px; /* Adjust the font size for smaller screens */
-            }
         }
     </style>
 </head>
