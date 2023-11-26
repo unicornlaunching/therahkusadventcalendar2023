@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rahkus Advent Calendar 2023</title>
+    <title>Advent Calendar 2023</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,11 +48,13 @@
     <audio id="audioPlayer" controls>
         <source id="audioSource" src="" type="audio/mpeg">
     </audio>
+    <button id="stopButton">Stop</button>
 
     <script>
         const calendar = document.getElementById('calendar');
         const audioPlayer = document.getElementById('audioPlayer');
         const audioSource = document.getElementById('audioSource');
+        const stopButton = document.getElementById('stopButton');
 
         // Function to play audio for a specific day
         function playAudio(day) {
@@ -60,6 +62,12 @@
             audioSource.src = audioFileName;
             audioPlayer.load();
             audioPlayer.play();
+        }
+
+        // Function to stop audio
+        function stopAudio() {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
         }
 
         // Create the calendar days dynamically
@@ -70,6 +78,9 @@
             dayElement.addEventListener('click', () => playAudio(day));
             calendar.appendChild(dayElement);
         }
+
+        // Add click event listener to the "Stop" button
+        stopButton.addEventListener('click', stopAudio);
     </script>
 </body>
 </html>
