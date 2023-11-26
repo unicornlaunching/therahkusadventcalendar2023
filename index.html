@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's A Rahkus Christmas Advent Calendar</title>
+    <title>Advent Calendar 2023</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,7 +43,17 @@
 <body>
     <h1>Advent Calendar 2023</h1>
     <div class="calendar" id="calendar">
-        <!-- Days will be generated dynamically using JavaScript -->
+        <!-- Days of the week will be displayed in the top row -->
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+
+        <!-- Days of December 1-25 will be displayed in the subsequent rows -->
+        <!-- The numbers of the days will be generated dynamically using JavaScript -->
     </div>
     <audio id="audioPlayer" controls>
         <source id="audioSource" src="" type="audio/mpeg">
@@ -71,8 +81,8 @@
         }
 
         // Create the calendar days dynamically, starting from Friday (December 1st)
-        const daysOfWeek = ['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
-        let currentDayOfWeekIndex = 0;
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let currentDayOfWeekIndex = daysOfWeek.indexOf('Fri');
 
         for (let day = 1; day <= 25; day++) {
             const dayElement = document.createElement('div');
@@ -80,11 +90,6 @@
             dayElement.textContent = day;
             dayElement.addEventListener('click', () => playAudio(day));
             calendar.appendChild(dayElement);
-
-            if (day === 1) {
-                // Find the index of December 1st in the daysOfWeek array
-                currentDayOfWeekIndex = daysOfWeek.indexOf('Fri');
-            }
 
             // Increment the day of the week index, wrapping around if necessary
             currentDayOfWeekIndex = (currentDayOfWeekIndex + 1) % 7;
