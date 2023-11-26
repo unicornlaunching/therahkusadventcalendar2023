@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rahkus Christmas Advent Calendar 2023</title>
+    <title>Advent Calendar 2023</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #333;
+            color: #fff;
         }
 
         .calendar {
@@ -17,31 +19,52 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .calendar .day {
             width: 100px;
             height: 100px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #444;
+            border: 1px solid #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .calendar .day:hover {
-            background-color: #ddd;
+            background-color: #555;
         }
 
         audio {
             display: none;
         }
+
+        button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
-    <h1>The Rahkus Christmas Advent Calendar 2023</h1>
+    <h1>Advent Calendar 2023</h1>
     <div class="calendar" id="calendar">
         <!-- Days of the week will be displayed in the top row -->
         <div class="day">Sun</div>
