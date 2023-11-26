@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rahkus Advent Calendar 2023</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .calendar .day {
+            width: 100px;
+            height: 100px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .calendar .day:hover {
+            background-color: #ddd;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advent Calendar 2023</h1>
+    <div class="calendar" id="calendar">
+        <!-- Days will be generated dynamically using JavaScript -->
+    </div>
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const calendar = document.getElementById('calendar');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+
+        // Function to play audio for a specific day
+        function playAudio(day) {
+            const audioFileName = `dec${day}.mp3`;
+            audioSource.src = audioFileName;
+            audioPlayer.load();
+            audioPlayer.play();
+        }
+
+        // Create the calendar days dynamically
+        for (let day = 1; day <= 25; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('day');
+            dayElement.textContent = day;
+            dayElement.addEventListener('click', () => playAudio(day));
+            calendar.appendChild(dayElement);
+        }
+    </script>
+</body>
+</html>
