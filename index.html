@@ -8,6 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #333;
+            color: #fff;
         }
 
         .calendar {
@@ -17,33 +19,64 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .calendar .day {
             width: 100px;
             height: 100px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #444;
+            border: 1px solid #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .calendar .day:hover {
-            background-color: #ddd;
+            background-color: #555;
         }
 
         audio {
             display: none;
+        }
+
+        button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
     <h1>Advent Calendar 2023</h1>
     <div class="calendar" id="calendar">
-        <!-- Days will be generated dynamically using JavaScript -->
+        <!-- Days of the week will be displayed in the top row -->
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+
+        <!-- Days of December 1-25 will be displayed in the subsequent rows -->
+        <!-- The numbers of the days will be generated dynamically using JavaScript -->
     </div>
     <audio id="audioPlayer" controls>
         <source id="audioSource" src="" type="audio/mpeg">
@@ -71,8 +104,8 @@
         }
 
         // Create the calendar days dynamically, starting from Friday (December 1st)
-        const daysOfWeek = ['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
-        let currentDayOfWeekIndex = 0;
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let currentDayOfWeekIndex = daysOfWeek.indexOf('Fri');
 
         for (let day = 1; day <= 25; day++) {
             const dayElement = document.createElement('div');
@@ -80,11 +113,6 @@
             dayElement.textContent = day;
             dayElement.addEventListener('click', () => playAudio(day));
             calendar.appendChild(dayElement);
-
-            if (day === 1) {
-                // Find the index of December 1st in the daysOfWeek array
-                currentDayOfWeekIndex = daysOfWeek.indexOf('Fri');
-            }
 
             // Increment the day of the week index, wrapping around if necessary
             currentDayOfWeekIndex = (currentDayOfWeekIndex + 1) % 7;
