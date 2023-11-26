@@ -12,7 +12,7 @@
 
         .calendar {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             gap: 10px;
             max-width: 600px;
             margin: 0 auto;
@@ -70,13 +70,24 @@
             audioPlayer.currentTime = 0;
         }
 
-        // Create the calendar days dynamically
+        // Create the calendar days dynamically, starting from Friday (December 1st)
+        const daysOfWeek = ['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
+        let currentDayOfWeekIndex = 0;
+
         for (let day = 1; day <= 25; day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('day');
             dayElement.textContent = day;
             dayElement.addEventListener('click', () => playAudio(day));
             calendar.appendChild(dayElement);
+
+            if (day === 1) {
+                // Find the index of December 1st in the daysOfWeek array
+                currentDayOfWeekIndex = daysOfWeek.indexOf('Fri');
+            }
+
+            // Increment the day of the week index, wrapping around if necessary
+            currentDayOfWeekIndex = (currentDayOfWeekIndex + 1) % 7;
         }
 
         // Add click event listener to the "Stop" button
